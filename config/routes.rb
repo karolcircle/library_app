@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :books do
-    get :copies, on: :member  
+    get :copies, on: :member
+    get :my_books, on: :member   
   end
 end

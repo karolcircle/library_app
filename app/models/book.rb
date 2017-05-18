@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_many :borrows
+  has_many :lendings
   validates :title, :author, presence: true
   
   def self.count_available

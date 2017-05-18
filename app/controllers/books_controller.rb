@@ -1,10 +1,15 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
   def copies
     @copies = Book.where("title = ? AND author = ?", params[:title], params[:author])
+  end
+
+  def my_books   
+    @my_books = Lending.where("user_id = ?", current_user.id)
   end
 
   def index

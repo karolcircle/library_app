@@ -17,7 +17,7 @@
     <% @lendings.each do |lending| %>
       <tr>
         <td><%= lending.book.title %></td>
-        
+        <td><%= lending.user.email %></td>        
         <td><%= lending.date_out %></td>
         <td><%= lending.date_in %></td>
         <td><%= link_to 'Show', lending %></td>        

@@ -1,5 +1,6 @@
 class LendingsController < ApplicationController
-  before_action :set_lending, only: [:show, :edit ]
+  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :set_lending, only: [:show ]
 
   # GET /lendings
   # GET /lendings.json
@@ -20,7 +21,7 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
-    @lending = Lending.create(book_id: params[:book], date_out: Date.today)
+    @lending = Lending.create(book_id: params[:book], user_id: current_user.id, date_out: Date.today)
     @book =  Book.find(params[:book])
     @book.lend_book
 
@@ -52,6 +53,6 @@ class LendingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lending_params
-      params.require(:lending).permit(:book_id, :date_out, :date_in)
+      params.require(:lending).permit(:book_id, :user_id, :date_out, :date_in)
     end
 end

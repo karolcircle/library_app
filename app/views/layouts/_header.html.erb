@@ -6,7 +6,8 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><%= link_to "Books", books_path %></li>
-      <li><%= link_to "Lendings history", lendings_path %></li>      
+      <li><%= link_to "Lendings history", lendings_path %></li> 
+      <li><%= link_to "My books", my_books_book_path(current_user) %></li>          
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>     

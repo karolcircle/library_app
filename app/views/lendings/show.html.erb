@@ -2,7 +2,7 @@
 
 <p>
   <strong>Book:</strong>
-  <%= @lending.book %>
+  <%= @lending.book.title %>
 </p>
 
 <p>
@@ -15,5 +15,4 @@
   <%= @lending.date_in %>
 </p>
 
-<%= link_to 'Edit', edit_lending_path(@lending) %> |
 <%= link_to 'Back', lendings_path %>

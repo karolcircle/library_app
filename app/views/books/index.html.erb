@@ -2,7 +2,7 @@
 
 <h1>Books</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Available copies</th>
@@ -18,7 +18,7 @@
         <td><%= count %></td>
         <td><%= link_to 'Copies', copies_book_path(book, title: book[0], author: book[1]), class: "btn btn-primary" %></td>
         <% book.each do |title, author| %>
-          <td><%= title %></td>
+          <td><%= title %></td>          
           <td><%= author %></td>  
         <% end %> 
       </tr>

@@ -1,5 +1,5 @@
 class LendingsController < ApplicationController
-  before_action :set_lending, only: [:show, :edit, :update, :destroy]
+  before_action :set_lending, only: [:show, :edit ]
 
   # GET /lendings
   # GET /lendings.json
@@ -17,10 +17,6 @@ class LendingsController < ApplicationController
     @lending = Lending.new
   end
 
-  # GET /lendings/1/edit
-  def edit
-  end
-
   # POST /lendings
   # POST /lendings.json
   def create
@@ -36,30 +32,6 @@ class LendingsController < ApplicationController
         format.html { render :new }
         format.json { render json: @lending.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /lendings/1
-  # PATCH/PUT /lendings/1.json
-  def update
-    respond_to do |format|
-      if @lending.update(lending_params)
-        format.html { redirect_to :back, notice: 'Lending was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lending }
-      else
-        format.html { render :edit }
-        format.json { render json: @lending.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /lendings/1
-  # DELETE /lendings/1.json
-  def destroy
-    @lending.destroy
-    respond_to do |format|
-      format.html { redirect_to lendings_url, notice: 'Lending was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

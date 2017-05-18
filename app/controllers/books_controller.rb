@@ -3,6 +3,10 @@ class BooksController < ApplicationController
 
   # GET /books
   # GET /books.json
+  def copies
+    @copies = Book.where("title = ? AND author = ?", params[:title], params[:author])
+  end
+
   def index
     @books = Book.all
   end

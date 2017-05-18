@@ -5,24 +5,22 @@
 <table>
   <thead>
     <tr>
+      <th>Available copies</th>
+      <th>List of copies</th>
       <th>Title</th>
-      <th>Author</th>
-      <th>Description</th>
-      <th>Available</th>
-      <th colspan="3"></th>
+      <th>Author</th>      
     </tr>
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+    <% @books.count_available.each do |book, count| %>
       <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.description %></td>
-        <td><%= book.available %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= count %></td>
+        <td><%= link_to 'Copies', copies_book_path(book, title: book[0], author: book[1]), class: "btn btn-primary" %></td>
+        <% book.each do |title, author| %>
+          <td><%= title %></td>
+          <td><%= author %></td>  
+        <% end %> 
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Book id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Details</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @copies.each do |book| %>
+      <tr>
+        <td><%= book.id%></td>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= link_to 'Show', book %></td>            
+        <td><% if book.available %>
+              <%= button_to "Borrow", lendings_path(book: book.id) %>
+            <% else %>
+              <%= button_to "Return", return_book_lending_path(book), method: :put %>
+            <% end %></td>
+      </tr>
+    <% end %>
+  </tbody> 
+</table>
+   

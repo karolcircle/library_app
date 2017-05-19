@@ -12,9 +12,9 @@
   <tbody>
     <% @my_books.each do |book| %>
       <tr>
-        <td><%= book.book_id %></td>
-        <td><%= Book.find(book.book_id).title %></td>
-        <td><%= Book.find(book.book_id).author %></td>
+        <td><%= book.book_id %></td>        
+        <td><%= book.book.title %></td>
+        <td><%= book.book.author %></td>
         <td><%= book.date_out %></td>
         <td><%= book.date_in %></td>       
       </tr>

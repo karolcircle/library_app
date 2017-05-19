@@ -3,15 +3,15 @@
     <div class="navbar-header">
       <a class="navbar-brand" >Library App</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+    <ul class="nav navbar-nav">      
       <li><%= link_to "Books", books_path %></li>
-      <li><%= link_to "Lendings history", lendings_path %></li> 
-      <li><%= link_to "My books", my_books_book_path(current_user) %></li>          
+      <li><%= link_to "Lendings history", lendings_path %></li>                
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>     
         <li><%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
+        <li><%= link_to "My books", my_books_book_path(current_user) %></li>          
+    </ul>
       <% else %>
         <li><%= link_to "Sign up", new_user_registration_path %></li>
         <li><%= link_to "Sign in", new_user_session_path %></li>

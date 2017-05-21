@@ -51,6 +51,11 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'pry'    
+end
+
+group :test do
+  gem 'webmock'
 end
 
 group :development do

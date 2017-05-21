@@ -24,16 +24,12 @@ class LendingsController < ApplicationController
     @lending = Lending.create(book_id: params[:book], user_id: current_user.id, date_out: Date.today)
     @book =  Book.find(params[:book])
     @book.lend_book
-
-    respond_to do |format|
-      if @lending.save
-        format.html { redirect_to :back, notice: 'Lending was successfully created.' }
-        format.json { render :show, status: :created, location: @lending }
-      else
-        format.html { render :new }
-        format.json { render json: @lending.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    if @lending.save
+      redirect_back(fallback_location: root_path)       
+    else
+      render :new
+    end   
   end
 
   def return_book  
@@ -42,7 +38,7 @@ class LendingsController < ApplicationController
     @book =  Book.find(params[:id])
     @book.return_book
     @lending.save
-    redirect_to :back
+    redirect_back(fallback_location: root_path)    
   end
     
   private

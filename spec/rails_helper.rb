@@ -7,6 +7,10 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'database_cleaner'
+require 'devise'
+require 'pry'
+require_relative 'support/controller_macros'
+include Warden::Test::Helpers
 
 DatabaseCleaner.strategy = :truncation
 
@@ -59,5 +63,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods 
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Warden::Test::Helpers
+  config.extend ControllerMacros, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :controller
 end

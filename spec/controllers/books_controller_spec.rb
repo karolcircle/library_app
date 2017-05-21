@@ -1,17 +1,18 @@
 require 'rails_helper'
 
 describe BooksController do
+login_user
 
   describe 'GET #show' do
-    it "assigns the requested book to @book" do
+    it "assigns the requested book to @book" do    
       book = FactoryGirl.create(:book)
-      get :show, id: book
+      get :show, params: { id: book }
       expect(assigns(:book)).to eq book
     end
 
     it "renders the :show template" do
       book = FactoryGirl.create(:book)
-      get :show, id: book    
+      get :show, params: { id: book }
       expect(response).to render_template :show
     end
   end
@@ -37,14 +38,14 @@ describe BooksController do
 
   describe 'GET #edit' do
     it "assigns the requested book to @book" do
-      book = FactoryGirl.create(:book)
-      get :edit, id: book
+      book = FactoryGirl.create(:book)     
+      get :edit, params: { id: book }
       expect(assigns(:book)).to eq book
     end
 
     it "renders the :edit template" do
       book = FactoryGirl.create(:book)
-      get :edit, id: book
+      get :edit, params: { id: book }
       expect(response).to render_template :edit
     end
   end
@@ -64,23 +65,23 @@ describe BooksController do
       author: 'Smith')
     end
 
-    it "locates the requested @book" do
-      patch :update, id: @book, book: attributes_for(:book)
+    it "locates the requested @book" do      
+      patch :update, params: { id: @book, book: attributes_for(:book) }
       expect(assigns(:book)).to eq(@book)
     end
 
-    it "changes @book's attributes" do
-      patch :update, id: @book,
+    it "changes @book's attributes" do     
+      patch :update, params: { id: @book,
       book: attributes_for(:book,
       title: 'Larry',
-      author: 'Smith')
+      author: 'Smith')}
       @book.reload
       expect(@book.title).to eq('Larry')
       expect(@book.author).to eq('Smith')
     end
 
-    it "redirects to the updated book" do
-      patch :update, id: @book, book: attributes_for(:book)
+    it "redirects to the updated book" do      
+      patch :update, params: { id: @book, book: attributes_for(:book) }
       expect(response).to redirect_to @book
     end
   end   
@@ -92,13 +93,13 @@ describe BooksController do
     end
 
     it "deletes the book" do
-      expect{
-      delete :destroy, id: @book
+      expect{      
+      delete :destroy, params: { id: @book }
       }.to change(Book,:count).by(-1)
     end
 
-    it "redirects to books#index" do
-      delete :destroy, id: @book
+    it "redirects to books#index" do      
+      delete :destroy, params: { id: @book }
       expect(response).to redirect_to books_url
     end
   end

@@ -8,3 +8,4 @@
 
 5.times{Book.create(author: 'John Powell', title: 'Lord of the Rings', description: 'Lord of the Rings description')} 
 10.times{Book.create(author: 'Tony Macron', title: 'Star Wars', description: 'Star Wars description')}
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

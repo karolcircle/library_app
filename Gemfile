@@ -35,6 +35,7 @@ gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'activeadmin', github: 'activeadmin'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

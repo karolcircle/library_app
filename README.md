@@ -1,24 +1,8 @@
-# README
+heroku deploy: https://warm-sea-13110.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App allows to:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+add and listing books
+boorow and return books
+lendings history view
+google account login
